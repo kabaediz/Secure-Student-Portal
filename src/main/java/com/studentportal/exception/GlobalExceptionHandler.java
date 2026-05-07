@@ -20,11 +20,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleAllExceptions(Exception ex) {
-        // Prevents information leakage - stack traces are not sent to the client!
         Map<String, String> response = new HashMap<>();
         response.put("error", "An unexpected error occurred. Please try again later.");
 
-        // Log the exception securely here (e.g., using SLF4J), but do not include sensitive user data!
 
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }

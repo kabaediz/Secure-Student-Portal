@@ -36,7 +36,6 @@ public class ProfileController {
 
     @GetMapping("/grades")
     public ResponseEntity<List<GradeDto>> getMyGrades(Authentication authentication) {
-        // IDOR Protection: We rely on the Authentication object (backend info) instead of path parameters!
         String email = authentication.getName();
         User user = userRepository.findByEmail(email).orElseThrow();
 
